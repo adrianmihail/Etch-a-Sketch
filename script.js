@@ -2,7 +2,7 @@ const grid = document.querySelector('#grid');
 
 
 function createOneColumn() {
-    let numberOfSquares = 16;
+    let numberOfSquares = userInput;
     let squareArray = new Array();
 
     for (let i = 0; i < numberOfSquares; i++) {
@@ -29,4 +29,18 @@ function createGrid (){
     };
 };
 
-createGrid();
+let userInput = 0;
+
+const gridBtn = document.querySelector('#gridBtn');
+gridBtn.addEventListener('click', () =>{
+    userInput = prompt('Enter the number of squares per side: ');
+    if (userInput > 100){
+        return alert('Input less!');
+    };
+
+    while (grid.firstChild){
+        grid.removeChild(grid.lastChild);
+    };
+    createGrid();
+});
+
